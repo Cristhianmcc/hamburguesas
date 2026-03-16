@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "error-container": "#ffdad6",
+                        "primary": "#B71C1C",
+                        "on-error-container": "#93000a",
+                        "outline": "#916f69",
+                        "on-primary-container": "#fffbff",
+                        "secondary-fixed": "#e5e2e1",
+                        "tertiary": "#006387",
+                        "inverse-primary": "#ffb4a5",
+                        "surface": "#fbf9f5",
+                        "on-secondary-fixed-variant": "#474746",
+                        "outline-variant": "#e5bdb6",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "surface-container-high": "#eae8e4",
+                        "secondary-container": "#e2dfde",
+                        "on-background": "#1b1c1a",
+                        "primary-fixed-dim": "#ffb4a5",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#e4e2de",
+                        "tertiary-container": "#007daa",
+                        "inverse-surface": "#30312e",
+                        "surface-tint": "#B71C1C",
+                        "primary-fixed": "#ffdad3",
+                        "on-tertiary-fixed-variant": "#004c69",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#fcfcff",
+                        "secondary": "#5f5e5e",
+                        "on-surface": "#1b1c1a",
+                        "tertiary-fixed-dim": "#7cd0ff",
+                        "on-tertiary-fixed": "#001e2c",
+                        "error": "#ba1a1a",
+                        "primary-container": "#D32F2F",
+                        "surface-container-low": "#f5f3ef",
+                        "tertiary-fixed": "#c4e7ff",
+                        "surface-container": "#efeeea",
+                        "inverse-on-surface": "#f2f0ed",
+                        "on-primary-fixed": "#3e0400",
+                        "surface-variant": "#e4e2de",
+                        "surface-bright": "#fbf9f5",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "on-surface-variant": "#5c403a",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#8B0000",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#dbdad6",
+                        "on-secondary": "#ffffff",
+                        "background": "#fbf9f5",
+                        "on-secondary-container": "#636262"
+                    },
+                    fontFamily: {
+                        "headline": ["Epilogue"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3 { font-family: 'Epilogue', sans-serif; }
+        .signature-glow {
+            background: linear-gradient(135deg, #B71C1C 0%, #D32F2F 100%);
+        }
+        .glass-nav {
+            background-color: rgba(251, 249, 245, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-background selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-outline-variant/15">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-extrabold tracking-tight text-primary font-headline">Gourmet Burgers</span>
+<div class="hidden md:flex gap-8">
+<a class="text-sm font-semibold tracking-wide text-on-surface hover:text-primary transition-colors" href="#menu">Menú</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface relative open-cart-btn" title="Ver carrito">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-primary rounded-full" id="nav-cart-dot"></span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative pt-20 sm:pt-28 pb-10 sm:pb-20 overflow-hidden">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+<div class="z-10">
+<span class="inline-block px-4 py-1.5 bg-primary-fixed text-on-primary-fixed-variant rounded-full text-xs font-bold tracking-widest uppercase mb-6">Artesanal &amp; Premium</span>
+<h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] mb-5 sm:mb-8 tracking-tighter text-on-background">
+                    La Experiencia de la <span class="text-primary italic">Hamburguesa</span> Perfecta
+                </h1>
+<p class="text-lg text-on-surface-variant max-w-lg mb-10 leading-relaxed">
+                    Carne Angus seleccionada, pan brioche horneado a diario y el toque secreto de nuestro maestro parrillero.
+                </p>
+<div class="flex flex-wrap gap-4">
+<a class="signature-glow text-on-primary px-8 py-4 rounded-full font-bold text-lg hover:scale-105 transition-transform inline-flex items-center gap-2 shadow-xl shadow-primary/20" href="#menu">
+                        Ver el Menú
+                        <span class="material-symbols-outlined">arrow_downward</span>
+</a>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -top-12 -right-12 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+<div class="relative rounded-2xl overflow-hidden shadow-2xl transform rotate-0 sm:rotate-2 hover:rotate-0 transition-transform duration-500">
+<img alt="Gourmet Burger" class="w-full h-[240px] sm:h-[380px] lg:h-[500px] object-cover" data-alt="Close up of gourmet burger with melting cheese and fresh vegetables on rustic wood" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBM6PQFBpi_nq6bjCODxezvQt-Gz6C_drc4yMQKDv1JBIHnFNDdwwov18sO1iOEDnjRTu1XdmE-9c-QIESBthOpkx9oj8Njo4pX2XIrSBn3VIrmtHOXNoDkD3nK6Q48ryQQS33-Ru-yHznpQbV6ppmdXj3hWZX86L3AeCPLDxK7aYDR3PhTRVr9lGu4iEEojJSmYC_vF83jMU-4MK3VP_VUHDwntCuTZ-4zMDZaTWRIC4lR6A0g_nCZs_y_162xj4GCaUVRteKSebPh"/>
+</div>
+<div class="hidden sm:block absolute -bottom-8 -left-8 bg-surface-container-highest p-6 rounded-xl shadow-lg max-w-[200px]">
+<p class="text-sm font-bold text-secondary italic leading-tight">"El mejor sabor ahumado que probarás hoy"</p>
+</div>
+</div>
+</div>
+</header>
+<!-- Ingredient Scroller -->
+<section class="py-6 sm:py-12 border-y border-outline-variant/15 overflow-hidden">
+<div class="flex gap-12 animate-infinite-scroll whitespace-nowrap">
+<div class="flex items-center gap-4 text-secondary/40 font-bold uppercase tracking-widest text-sm">
+<span class="material-symbols-outlined text-primary">check_circle</span> 100% Black Angus
+                <span class="material-symbols-outlined text-primary ml-12">check_circle</span> Pan Brioche Artesanal
+                <span class="material-symbols-outlined text-primary ml-12">check_circle</span> Ingredientes Orgánicos
+                <span class="material-symbols-outlined text-primary ml-12">check_circle</span> Salsa Secreta Ember
+                <span class="material-symbols-outlined text-primary ml-12">check_circle</span> 100% Black Angus
+                <span class="material-symbols-outlined text-primary ml-12">check_circle</span> Pan Brioche Artesanal
+            </div>
+</div>
+</section>
+<!-- Menu Section -->
+<section class="py-12 sm:py-24 bg-surface-container-low" id="menu">
+<div class="max-w-7xl mx-auto px-4 sm:px-6">
+<div class="mb-8 sm:mb-16 text-center">
+<h2 class="text-4xl md:text-5xl font-extrabold mb-4">Nuestras Creaciones</h2>
+<p class="text-secondary max-w-xl mx-auto">Seleccionamos cada ingrediente para crear una sinfonía de sabores en cada bocado.</p>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Burger 1 -->
+<div class="bg-surface group rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+<div class="relative h-64 overflow-hidden"><img alt="Burger" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZExuZCmjUqKM-d9nhhnvOT3jtlUYLPyvwwY5cVa3XBeqo-kOzc8PyVlGmN14mkz9ggKPrtAhjGc7dgkNyn3oxqKMwOhOlGP37wAXD7ag43MLwn14ROEjtYEaPsuNNyXEYKxbIIh7JAN9STqmFN0GuRgy8Ar3OlqLCpwz2382yFAgYc70S68FyWJ3y0Y3SIi2Us9xcIvXnEyrS6SEacu4522P5J1u105LGzAvw6aNNFcUrQzFqLhuxCxV7eR2ENbVYE-N2ewLTX4qr"/>
+<div class="absolute inset-0 bg-primary/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm">
+<button class="bg-white text-primary px-6 py-2 rounded-full font-bold shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300" data-burger-id="1">
+        Ver Detalles
+    </button>
+</div>
+<div class="absolute top-4 right-4 bg-surface/90 backdrop-blur-md px-3 py-1 rounded-full font-bold text-primary shadow-sm">S/ 24.90</div></div>
+<div class="p-5 sm:p-8">
+<h3 class="text-xl sm:text-2xl font-bold mb-2">Classic</h3>
+<p class="text-secondary text-sm mb-6 leading-relaxed">Carne Angus de 180g, lechuga fresca, tomate, cebolla roja y nuestra mayonesa especial.</p>
+<button class="w-full flex items-center justify-center gap-2 py-3 rounded-full border-2 border-primary text-primary font-bold hover:bg-primary hover:text-on-primary transition-all" data-burger-id="1">
+<span class="material-symbols-outlined text-xl">add_shopping_cart</span>
+                            Agregar
+                        </button>
+</div>
+</div>
+<!-- Burger 2 -->
+<div class="bg-surface group rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+<div class="relative h-64 overflow-hidden"><img alt="Burger" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2yUsc-qGMUUUpflh8KYPcq34wkNpiHhrQYkHJmHm7RpPJOSEKo-g1fSA-6cxC7463ze8uQyqYWZum4IKzi7PxE5gg3ZAyuGNcOTGmDwFY3n2HxyOnZN9anKAjWd1n6lrU4rNBHM4VNhQrJo5nIMJoVyA1X_JdHpxxk8jFs9N0rxno4rxMm9_BqLqLuph0nC9lMrYbi3N_O7_htivi-8U8VOi3yTzzUcK_nSX3LmkMw54E4JwkfMGxPi9Gatf3qN5I4lr1GU6Z9ZVB"/>
+<div class="absolute inset-0 bg-primary/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm">
+<button class="bg-white text-primary px-6 py-2 rounded-full font-bold shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300" data-burger-id="2">
+        Ver Detalles
+    </button>
+</div>
+<div class="absolute top-4 right-4 bg-surface/90 backdrop-blur-md px-3 py-1 rounded-full font-bold text-primary shadow-sm">S/ 24.90</div></div>
+<div class="p-5 sm:p-8">
+<h3 class="text-xl sm:text-2xl font-bold mb-2">Double Cheese</h3>
+<p class="text-secondary text-sm mb-6 leading-relaxed">Doble ración de carne Angus y doble queso Cheddar fundido al calor de la brasa.</p>
+<button class="w-full flex items-center justify-center gap-2 py-3 rounded-full border-2 border-primary text-primary font-bold hover:bg-primary hover:text-on-primary transition-all" data-burger-id="2">
+<span class="material-symbols-outlined text-xl">add_shopping_cart</span>
+                            Agregar
+                        </button>
+</div>
+</div>
+<!-- Burger 3 -->
+<div class="bg-surface group rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+<div class="relative h-64 overflow-hidden"><img alt="Burger" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAO7-liQMOdmpxpfPIWVowgLs92yx2OGWBAvDmEfVE-c_a6jhBKJLWw4lq77kLW5UcEe9b9pa5j0zzAB5oR4pP80LWMWmFpObpsuotMHDTDFVbHPywd3j0cZ-GhbohBtn2a5ioOpLZ6UgJ1Vb1XCUUIGgGiTov3uOi-LeekOYTAzGt6g8qaPlu0EF9GA17fjoaFopfPojNovPawl7BfxSyUTUda14I0Y-SHEMeZTj8SQhe9kajDNIaKiUn6r2m44fytGpdsEnartVW"/>
+<div class="absolute inset-0 bg-primary/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm">
+<button class="bg-white text-primary px-6 py-2 rounded-full font-bold shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300" data-burger-id="3">
+        Ver Detalles
+    </button>
+</div>
+<div class="absolute top-4 right-4 bg-surface/90 backdrop-blur-md px-3 py-1 rounded-full font-bold text-primary shadow-sm">S/ 24.90</div></div>
+<div class="p-5 sm:p-8">
+<h3 class="text-xl sm:text-2xl font-bold mb-2">BBQ Bacon</h3>
+<p class="text-secondary text-sm mb-6 leading-relaxed">Tiras de tocino ahumado, salsa BBQ casera y cebolla caramelizada crujiente.</p>
+<button class="w-full flex items-center justify-center gap-2 py-3 rounded-full border-2 border-primary text-primary font-bold hover:bg-primary hover:text-on-primary transition-all" data-burger-id="3">
+<span class="material-symbols-outlined text-xl">add_shopping_cart</span>
+                            Agregar
+                        </button>
+</div>
+</div>
+<!-- Burger 4 -->
+<div class="bg-surface group rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+<div class="relative h-64 overflow-hidden"><img alt="Burger" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCm7w8flio-03wAj7gQpus6bnvQyO3dn__SJSCdDo2C3k8-IVnqHyW68EFAnO3lUINVkVfTD6IlFqGZySycM_PPjlGZxJEjocW_lSYeqkbz4uG7SRUPgmffK3td3EIutFrgDH0F1v43R4quTtTB5f2EeJsYNDcq1zlZ3fvxOUyitR1lZvJnnOlkjKi6_iCSyBCjIsDSDIOSZNQ5qVAA_NVL6d4lkwWGkRv2Nz2joGiKWXkKHZbJlN9-0ZpAfBXiojsS0DVNqWoRdCIM"/>
+<div class="absolute inset-0 bg-primary/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm">
+<button class="bg-white text-primary px-6 py-2 rounded-full font-bold shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300" data-burger-id="4">
+        Ver Detalles
+    </button>
+</div>
+<div class="absolute top-4 right-4 bg-surface/90 backdrop-blur-md px-3 py-1 rounded-full font-bold text-primary shadow-sm">S/ 24.90</div></div>
+<div class="p-5 sm:p-8">
+<h3 class="text-xl sm:text-2xl font-bold mb-2">Truffle Mushroom</h3>
+<p class="text-secondary text-sm mb-6 leading-relaxed">Hongos salteados al tomillo con aceite de trufa blanca y queso Suizo.</p>
+<button class="w-full flex items-center justify-center gap-2 py-3 rounded-full border-2 border-primary text-primary font-bold hover:bg-primary hover:text-on-primary transition-all" data-burger-id="4">
+<span class="material-symbols-outlined text-xl">add_shopping_cart</span>
+                            Agregar
+                        </button>
+</div>
+</div>
+<!-- Burger 5 -->
+<div class="bg-surface group rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+<div class="relative h-64 overflow-hidden"><img alt="Burger" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAs2b9PuQUXnT0_YZ9vfjrAQglFtlHxzf3_V7erqyVStvv6r2TAuC78xCRO0XKFQCpowaKz5KXbkqaF4SL0roaWgpuj-tI7Kz0MWMVg32HFjPI0lmlNZbhh6g0op9N4zKtUd4Goc4UGIEIQFhXxLwWTwKvyK0jXN8fdPArfdk0paOv36e6-laaf6vF6xCOFuJTDAgqmD6MYFnz6NNbmewrbUTJcsbRUVZP59rOIdjAt0iwgmfm1IDs0cC0l6H-U4pZYIyxQdnqDvw-k"/>
+<div class="absolute inset-0 bg-primary/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm">
+<button class="bg-white text-primary px-6 py-2 rounded-full font-bold shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300" data-burger-id="5">
+        Ver Detalles
+    </button>
+</div>
+<div class="absolute top-4 right-4 bg-surface/90 backdrop-blur-md px-3 py-1 rounded-full font-bold text-primary shadow-sm">S/ 24.90</div></div>
+<div class="p-5 sm:p-8">
+<h3 class="text-xl sm:text-2xl font-bold mb-2">Spicy Jalapeño</h3>
+<p class="text-secondary text-sm mb-6 leading-relaxed">Para los valientes: jalapeños frescos, salsa chipotle y queso pepper jack.</p>
+<button class="w-full flex items-center justify-center gap-2 py-3 rounded-full border-2 border-primary text-primary font-bold hover:bg-primary hover:text-on-primary transition-all" data-burger-id="5">
+<span class="material-symbols-outlined text-xl">add_shopping_cart</span>
+                            Agregar
+                        </button>
+</div>
+</div>
+<!-- Burger 6 -->
+<div class="bg-surface group rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+<div class="relative h-64 overflow-hidden"><img alt="Burger" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbnXISiYWr-DWq22RG_pDxR6xK3vqNubo2AubDYUbFyksjRfWwVBKrKRUAzMi0UD20djSVl0fATXmdsF0tFYh7S4g41zQsH5H9H7EdYTlXlDdN35AtzE8sOCGfinSYkhAqmm6HEwI6RXsaRDW0ZviAPYEIzZP_Nf6_Ea441Sl9jr2uYEuM6H2rWs4j3MxE5D04ydRQP9-Kgd6m0FAn0_6MJtGerWdf8IKyg5rD13tGcQ56H-MyuJU_bfYZ7ZZXHT1ublWCYYMeoWKj"/>
+<div class="absolute inset-0 bg-primary/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm">
+<button class="bg-white text-primary px-6 py-2 rounded-full font-bold shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300" data-burger-id="6">
+        Ver Detalles
+    </button>
+</div>
+<div class="absolute top-4 right-4 bg-surface/90 backdrop-blur-md px-3 py-1 rounded-full font-bold text-primary shadow-sm">S/ 24.90</div></div>
+<div class="p-5 sm:p-8">
+<h3 class="text-xl sm:text-2xl font-bold mb-2">Veggie Deluxe</h3>
+<p class="text-secondary text-sm mb-6 leading-relaxed">Medallón de quinoa y lentejas, palta fresca, brotes y mayonesa vegana.</p>
+<button class="w-full flex items-center justify-center gap-2 py-3 rounded-full border-2 border-primary text-primary font-bold hover:bg-primary hover:text-on-primary transition-all" data-burger-id="6">
+<span class="material-symbols-outlined text-xl">add_shopping_cart</span>
+                            Agregar
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Pedido -->
+<section class="bg-gradient-to-r from-[#23120f] to-[#B71C1C] py-10 sm:py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
+    <div class="text-center md:text-left">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-2 font-headline">¿Listo para pedir?</h2>
+      <p class="text-white/70 text-base font-body">Elige tu hamburguesa, personalízala y envía tu pedido directo por WhatsApp.</p>
+    </div>
+    <button class="open-cart-btn flex items-center gap-3 bg-white text-primary px-8 py-4 rounded-full font-extrabold text-base shadow-2xl hover:scale-105 transition-transform font-label">
+      <span class="material-symbols-outlined">shopping_cart</span>
+      Ver mi Carrito
+    </button>
+  </div>
+</section>
+<!-- Extended FAB -->
+<button class="fixed bottom-6 right-4 sm:bottom-8 sm:right-8 z-40 bg-primary text-on-primary h-12 sm:h-14 px-5 sm:px-8 rounded-full shadow-2xl flex items-center gap-2 sm:gap-3 hover:scale-105 transition-transform open-cart-btn" id="cart-fab">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="font-bold">0 Items</span>
+</button>
+<!-- Footer -->
+<footer class="bg-surface-dim py-10 sm:py-20">
+<div class="max-w-7xl mx-auto px-4 sm:px-6">
+<div class="grid md:grid-cols-4 gap-8 sm:gap-12 mb-10 sm:mb-16">
+<div class="col-span-1 md:col-span-2">
+<span class="text-2xl font-extrabold text-primary font-headline block mb-6">Gourmet Burgers</span>
+<p class="text-on-surface-variant max-w-sm">Elevando el estándar de la comida artesanal con pasión por el detalle y el sabor auténtico.</p>
+</div>
+<div>
+<h5 class="font-bold mb-6 text-on-background uppercase tracking-widest text-xs">Social</h5>
+<ul class="space-y-4 text-sm font-medium text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Instagram</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Facebook</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">WhatsApp</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold mb-6 text-on-background uppercase tracking-widest text-xs">Información</h5>
+<ul class="space-y-4 text-sm font-medium text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Operating Hours</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Contact Us</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between gap-6">
+<p class="text-xs font-bold text-on-surface-variant/50">© 2024 Gourmet Burgers. All rights reserved.</p>
+<div class="flex gap-6">
+<span class="text-xs font-bold text-on-surface-variant/50 uppercase tracking-widest">Lima, Perú</span>
+</div>
+</div>
+</div>
+</footer>
+<!-- ===================== MODAL DETALLE HAMBURGUESA ===================== -->
+<div class="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/70 backdrop-blur-md" id="product-modal">
+  <div class="bg-surface max-w-2xl w-full max-h-[calc(100dvh-2rem)] rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row" id="modal-card">
+    <div class="md:w-5/12 h-64 md:h-auto relative overflow-hidden">
+      <img alt="Detalle Burger" class="w-full h-full object-cover" id="modal-img"/>
+      <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/60 to-transparent"></div>
+      <div class="absolute bottom-4 left-4 bg-primary text-white px-4 py-1 rounded-full font-extrabold text-lg shadow-md" id="modal-price"></div>
+    </div>
+    <div class="md:w-7/12 p-4 sm:p-7 flex flex-col overflow-y-auto">
+      <div class="flex justify-between items-start mb-3">
+        <h3 class="text-2xl font-extrabold text-on-background leading-tight" id="modal-name"></h3>
+        <button class="p-1 hover:bg-surface-container-high rounded-full transition-colors ml-2 flex-shrink-0" id="modal-close"><span class="material-symbols-outlined">close</span></button>
+      </div>
+      <p class="text-secondary text-sm mb-4 leading-relaxed" id="modal-desc"></p>
+
+      <!-- Ingredientes con chips -->
+      <div class="mb-5">
+        <p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-3">Lleva</p>
+        <div class="flex flex-wrap gap-2" id="modal-ingredients"></div>
+      </div>
+
+      <!-- Tipo de Pan -->
+      <div class="mb-4">
+        <p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">Tipo de Pan</p>
+        <div class="flex flex-wrap gap-2" id="modal-bread">
+          <button class="pan-btn px-4 py-1.5 rounded-full border-2 border-outline-variant text-sm font-semibold transition-all hover:border-primary hover:text-primary" data-val="Brioche">Brioche</button>
+          <button class="pan-btn px-4 py-1.5 rounded-full border-2 border-outline-variant text-sm font-semibold transition-all hover:border-primary hover:text-primary" data-val="Integral">Integral</button>
+          <button class="pan-btn px-4 py-1.5 rounded-full border-2 border-outline-variant text-sm font-semibold transition-all hover:border-primary hover:text-primary" data-val="Clásico">Clásico</button>
+        </div>
+      </div>
+
+      <!-- Cremas -->
+      <div class="mb-5">
+        <p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">Cremas <span class="normal-case font-normal">(puedes elegir varias)</span></p>
+        <div class="flex flex-wrap gap-2">
+          <button class="crema-btn px-4 py-1.5 rounded-full border-2 border-outline-variant text-sm font-semibold transition-all hover:border-primary hover:text-primary" data-val="Mayonesa">Mayonesa</button>
+          <button class="crema-btn px-4 py-1.5 rounded-full border-2 border-outline-variant text-sm font-semibold transition-all hover:border-primary hover:text-primary" data-val="Ketchup">Ketchup</button>
+          <button class="crema-btn px-4 py-1.5 rounded-full border-2 border-outline-variant text-sm font-semibold transition-all hover:border-primary hover:text-primary" data-val="Mostaza">Mostaza</button>
+          <button class="crema-btn px-4 py-1.5 rounded-full border-2 border-outline-variant text-sm font-semibold transition-all hover:border-primary hover:text-primary" data-val="Crema de Ají">Crema de Ají</button>
+          <button class="crema-btn px-4 py-1.5 rounded-full border-2 border-outline-variant text-sm font-semibold transition-all hover:border-primary hover:text-primary" data-val="Chimichurri">Chimichurri</button>
+          <button class="crema-btn px-4 py-1.5 rounded-full border-2 border-outline-variant text-sm font-semibold transition-all hover:border-primary hover:text-primary" data-val="Sin crema">Sin crema</button>
+        </div>
+      </div>
+
+      <!-- Cantidad y botón -->
+      <div class="mt-auto pt-4 border-t border-outline-variant/30">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-sm font-semibold text-on-surface-variant">Cantidad</span>
+          <div class="flex items-center gap-4 bg-surface-container-low px-4 py-2 rounded-full">
+            <button class="text-primary font-bold text-xl leading-none hover:scale-110 transition-transform" id="qty-minus">−</button>
+            <span class="font-bold text-lg w-6 text-center" id="modal-qty">1</span>
+            <button class="text-primary font-bold text-xl leading-none hover:scale-110 transition-transform" id="qty-plus">+</button>
+          </div>
+        </div>
+        <button class="w-full py-4 bg-primary text-on-primary rounded-full font-extrabold text-base shadow-lg shadow-primary/25 hover:scale-[1.02] transition-transform flex items-center justify-center gap-2" id="modal-add-btn">
+          <span class="material-symbols-outlined">add_shopping_cart</span>
+          Agregar al Carrito
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== MODAL CARRITO ===================== -->
+<div class="fixed inset-0 z-[300] flex items-end md:items-center justify-center p-0 md:p-4 bg-black/70 backdrop-blur-md" id="cart-modal">
+  <div class="bg-surface w-full md:max-w-lg rounded-t-3xl md:rounded-3xl overflow-hidden shadow-2xl flex flex-col max-h-[95vh]" id="cart-panel">
+    <!-- Header carrito -->
+    <div class="flex items-center justify-between px-4 sm:px-6 pt-4 sm:pt-6 pb-4 border-b border-outline-variant/30">
+      <div class="flex items-center gap-3">
+        <span class="material-symbols-outlined text-primary">shopping_cart</span>
+        <h3 class="text-xl font-extrabold text-on-background">Tu Pedido</h3>
+      </div>
+      <button class="p-1 hover:bg-surface-container-high rounded-full transition-colors" id="cart-close"><span class="material-symbols-outlined">close</span></button>
+    </div>
+
+    <div class="overflow-y-auto flex-1 px-4 sm:px-6 py-3 space-y-3" id="cart-items-list">
+      <p class="text-center text-secondary py-8 text-sm" id="cart-empty-msg">Tu carrito está vacío.<br>Selecciona una hamburguesa para comenzar.</p>
+    </div>
+
+    <!-- Separación opciones extra -->
+    <div class="px-4 sm:px-6 pb-5 sm:pb-6 border-t border-outline-variant/20 pt-4 space-y-3" id="cart-extras">
+      <!-- Gaseosa -->
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">Gaseosa</p>
+        <div class="flex flex-wrap gap-2">
+          <button class="gaseo-btn px-4 py-1.5 rounded-full border-2 border-outline-variant text-sm font-semibold transition-all hover:border-primary hover:text-primary" data-val="Coca-Cola">Coca-Cola</button>
+          <button class="gaseo-btn px-4 py-1.5 rounded-full border-2 border-outline-variant text-sm font-semibold transition-all hover:border-primary hover:text-primary" data-val="Inca Kola">Inca Kola</button>
+          <button class="gaseo-btn px-4 py-1.5 rounded-full border-2 border-outline-variant text-sm font-semibold transition-all hover:border-primary hover:text-primary" data-val="Sprite">Sprite</button>
+          <button class="gaseo-btn px-4 py-1.5 rounded-full border-2 border-outline-variant text-sm font-semibold transition-all hover:border-primary hover:text-primary" data-val="Sin gaseosa">Sin gaseosa</button>
+        </div>
+      </div>
+
+      <!-- Nombre del cliente -->
+      <div>
+        <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant block mb-2">Nombre del Cliente</label>
+        <input class="w-full px-4 py-3 rounded-xl bg-surface-container-high border border-outline-variant/30 focus:ring-2 focus:ring-primary/30 text-on-surface placeholder-on-surface-variant/50 text-sm" id="cart-name" placeholder="Ej. Juan Pérez" type="text"/>
+      </div>
+
+      <!-- Dirección + GPS -->
+      <div>
+        <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant block mb-2">Dirección de Entrega</label>
+        <div class="relative">
+          <input class="w-full px-4 py-3 pr-12 rounded-xl bg-surface-container-high border border-outline-variant/30 focus:ring-2 focus:ring-primary/30 text-on-surface placeholder-on-surface-variant/50 text-sm" id="cart-address" placeholder="Calle, Número, Distrito" type="text"/>
+          <button class="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-primary hover:bg-primary/10 rounded-full transition-colors" id="gps-btn" title="Usar mi ubicación actual" type="button">
+            <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">location_on</span>
+          </button>
+        </div>
+        <p class="text-xs text-on-surface-variant/60 mt-1 flex items-center gap-1" id="gps-status">
+          <span class="material-symbols-outlined text-base">info</span>
+          Toca el ícono para detectar tu ubicación por GPS
+        </p>
+      </div>
+
+      <!-- Totales -->
+      <div class="pt-3 border-t border-outline-variant/30 space-y-2">
+        <div class="flex justify-between text-sm text-secondary"><span>Subtotal</span><span id="cart-subtotal">S/ 0.00</span></div>
+        <div class="flex justify-between text-sm text-secondary"><span>Envío</span><span>S/ 5.00</span></div>
+        <div class="flex justify-between text-xl font-extrabold text-on-background pt-1"><span>Total</span><span class="text-primary" id="cart-total">S/ 5.00</span></div>
+      </div>
+
+      <button class="w-full py-4 rounded-full font-bold text-base transition-all flex items-center justify-center gap-2 border-2 border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary" id="seguir-btn" type="button">
+        <span class="material-symbols-outlined text-xl">arrow_back</span>
+        Seguir pidiendo
+      </button>
+
+      <button class="w-full bg-[#25D366] hover:bg-[#128C7E] text-white py-3.5 sm:py-4 rounded-full font-extrabold text-sm sm:text-base transition-all flex items-center justify-center gap-2 sm:gap-3 shadow-xl shadow-green-500/20 whitespace-nowrap" id="whatsapp-btn" type="button">
+        <svg class="w-5 h-5 sm:w-6 sm:h-6 fill-white flex-shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.862L.057 23.982l6.305-1.654A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.368l-.36-.214-3.721.976.994-3.622-.235-.372A9.818 9.818 0 1112 21.818z"/></svg>
+        <span>Pedir por WhatsApp</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== ESTILOS EXTRA ===================== -->
+<style>
+  .btn-selected { border-color: #B71C1C !important; color: #B71C1C !important; background: #ffdad3 !important; }
+  .ingr-chip { display:inline-flex; align-items:center; gap:6px; padding:4px 12px; border-radius:999px; background:#ffdad3; color:#8B0000; font-size:.73rem; font-weight:700; font-family:'Manrope',sans-serif; letter-spacing:.02em; }
+  .ingr-chip::before { content:''; display:inline-block; width:5px; height:5px; border-radius:50%; background:#B71C1C; flex-shrink:0; }
+
+  /* ---- Modales: ocultos por defecto con transición suave ---- */
+  #product-modal,
+  #cart-modal {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.28s ease, visibility 0s linear 0.28s;
+  }
+  #product-modal.modal-open,
+  #cart-modal.modal-open {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.28s ease, visibility 0s linear 0s;
+  }
+  /* Tarjeta de detalle: sube suavemente */
+  #modal-card {
+    opacity: 0;
+    transform: translateY(22px) scale(0.97);
+    transition: opacity 0.32s ease, transform 0.36s cubic-bezier(0.34,1.3,0.64,1);
+  }
+  #product-modal.modal-open #modal-card {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  /* Panel del carrito: sube desde abajo */
+  #cart-panel {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.3s ease, transform 0.36s cubic-bezier(0.34,1.3,0.64,1);
+  }
+  #cart-modal.modal-open #cart-panel {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ---- Soporte táctil: overlay de hamburguesa visible en touch ---- */
+  .burger-overlay {
+    transition: opacity 0.3s ease;
+  }
+  @media (pointer: coarse) {
+    .burger-overlay {
+      opacity: 1 !important;
+      background-color: rgba(40, 10, 8, 0.4) !important;
+      backdrop-filter: none;
+    }
+    .burger-overlay-btn {
+      transform: translateY(0) !important;
+    }
+  }
+
+  /* ---- Ajustes extra mobile ---- */
+  @media (max-width: 639px) {
+    /* El modal de producto ocupa toda la pantalla como bottom-sheet */
+    #product-modal {
+      align-items: flex-end;
+      padding: 0;
+    }
+    #modal-card {
+      border-radius: 1.5rem 1.5rem 0 0;
+      max-height: 95dvh;
+    }
+    /* El panel de pago extra tiene scroll suave */
+    #cart-extras {
+      max-height: 55vh;
+      overflow-y: auto;
+    }
+  }
+</style>
+
+<!-- ===================== JAVASCRIPT ===================== -->
+<script>
+const BURGERS = [
+  {
+    id: 1,
+    name: "Classic",
+    price: 24.90,
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBZExuZCmjUqKM-d9nhhnvOT3jtlUYLPyvwwY5cVa3XBeqo-kOzc8PyVlGmN14mkz9ggKPrtAhjGc7dgkNyn3oxqKMwOhOlGP37wAXD7ag43MLwn14ROEjtYEaPsuNNyXEYKxbIIh7JAN9STqmFN0GuRgy8Ar3OlqLCpwz2382yFAgYc70S68FyWJ3y0Y3SIi2Us9xcIvXnEyrS6SEacu4522P5J1u105LGzAvw6aNNFcUrQzFqLhuxCxV7eR2ENbVYE-N2ewLTX4qr",
+    desc: "Carne Angus de 180g, lechuga fresca, tomate, cebolla roja y nuestra mayonesa especial.",
+    ingredients: ["Carne Angus 180g","Queso Cheddar","Lechuga","Tomate","Cebolla roja","Mayonesa especial","Pan Brioche"]
+  },
+  {
+    id: 2,
+    name: "Double Cheese",
+    price: 29.90,
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuA2yUsc-qGMUUUpflh8KYPcq34wkNpiHhrQYkHJmHm7RpPJOSEKo-g1fSA-6cxC7463ze8uQyqYWZum4IKzi7PxE5gg3ZAyuGNcOTGmDwFY3n2HxyOnZN9anKAjWd1n6lrU4rNBHM4VNhQrJo5nIMJoVyA1X_JdHpxxk8jFs9N0rxno4rxMm9_BqLqLuph0nC9lMrYbi3N_O7_htivi-8U8VOi3yTzzUcK_nSX3LmkMw54E4JwkfMGxPi9Gatf3qN5I4lr1GU6Z9ZVB",
+    desc: "Doble ración de carne Angus y doble queso Cheddar fundido al calor de la brasa.",
+    ingredients: ["Doble Carne Angus","Doble Queso Cheddar","Tocino ahumado","Cebolla caramelizada","Salsa especial","Pan Brioche"]
+  },
+  {
+    id: 3,
+    name: "BBQ Bacon",
+    price: 27.90,
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBAO7-liQMOdmpxpfPIWVowgLs92yx2OGWBAvDmEfVE-c_a6jhBKJLWw4lq77kLW5UcEe9b9pa5j0zzAB5oR4pP80LWMWmFpObpsuotMHDTDFVbHPywd3j0cZ-GhbohBtn2a5ioOpLZ6UgJ1Vb1XCUUIGgGiTov3uOi-LeekOYTAzGt6g8qaPlu0EF9GA17fjoaFopfPojNovPawl7BfxSyUTUda14I0Y-SHEMeZTj8SQhe9kajDNIaKiUn6r2m44fytGpdsEnartVW",
+    desc: "Tiras de tocino ahumado, salsa BBQ casera y cebolla caramelizada crujiente.",
+    ingredients: ["Carne Angus 180g","Tocino ahumado extra","Salsa BBQ casera","Cebolla caramelizada","Lechuga","Queso Gouda","Pan Integral"]
+  },
+  {
+    id: 4,
+    name: "Truffle Mushroom",
+    price: 32.90,
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCm7w8flio-03wAj7gQpus6bnvQyO3dn__SJSCdDo2C3k8-IVnqHyW68EFAnO3lUINVkVfTD6IlFqGZySycM_PPjlGZxJEjocW_lSYeqkbz4uG7SRUPgmffK3td3EIutFrgDH0F1v43R4quTtTB5f2EeJsYNDcq1zlZ3fvxOUyitR1lZvJnnOlkjKi6_iCSyBCjIsDSDIOSZNQ5qVAA_NVL6d4lkwWGkRv2Nz2joGiKWXkKHZbJlN9-0ZpAfBXiojsS0DVNqWoRdCIM",
+    desc: "Hongos salteados al tomillo con aceite de trufa blanca y queso Suizo.",
+    ingredients: ["Carne Angus 180g","Hongos salteados al tomillo","Aceite de trufa blanca","Queso Suizo","Rúcula fresca","Pan Brioche artesanal"]
+  },
+  {
+    id: 5,
+    name: "Spicy Jalapeño",
+    price: 26.90,
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAs2b9PuQUXnT0_YZ9vfjrAQglFtlHxzf3_V7erqyVStvv6r2TAuC78xCRO0XKFQCpowaKz5KXbkqaF4SL0roaWgpuj-tI7Kz0MWMVg32HFjPI0lmlNZbhh6g0op9N4zKtUd4Goc4UGIEIQFhXxLwWTwKvyK0jXN8fdPArfdk0paOv36e6-laaf6vF6xCOFuJTDAgqmD6MYFnz6NNbmewrbUTJcsbRUVZP59rOIdjAt0iwgmfm1IDs0cC0l6H-U4pZYIyxQdnqDvw-k",
+    desc: "Para los valientes: jalapeños frescos, salsa chipotle y queso pepper jack.",
+    ingredients: ["Carne Angus 180g","Jalapeños frescos","Salsa Chipotle","Queso Pepper Jack","Lechuga","Tomate","Pan Clásico"]
+  },
+  {
+    id: 6,
+    name: "Veggie Deluxe",
+    price: 22.90,
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAbnXISiYWr-DWq22RG_pDxR6xK3vqNubo2AubDYUbFyksjRfWwVBKrKRUAzMi0UD20djSVl0fATXmdsF0tFYh7S4g41zQsH5H9H7EdYTlXlDdN35AtzE8sOCGfinSYkhAqmm6HEwI6RXsaRDW0ZviAPYEIzZP_Nf6_Ea441Sl9jr2uYEuM6H2rWs4j3MxE5D04ydRQP9-Kgd6m0FAn0_6MJtGerWdf8IKyg5rD13tGcQ56H-MyuJU_bfYZ7ZZXHT1ublWCYYMeoWKj",
+    desc: "Medallón de quinoa y lentejas, palta fresca, brotes y mayonesa vegana.",
+    ingredients: ["Medallón de Quinoa y Lentejas","Palta fresca","Brotes verdes","Tomate","Lechuga","Mayonesa vegana","Pan Integral"]
+  }
+];
+
+let cart = [];
+let modalBurger = null;
+let modalQty = 1;
+let selectedBread = '';
+let selectedCremas = [];
+let selectedGaseo = '';
+
+const $ = id => document.getElementById(id);
+
+function openModal(id) {
+  const el = $(id);
+  el.classList.add('modal-open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(id) {
+  $(id).classList.remove('modal-open');
+  document.body.style.overflow = '';
+}
+
+function openProductModal(id) {
+  const b = BURGERS.find(x => x.id === id);
+  if (!b) return;
+  modalBurger = b;
+  modalQty = 1;
+  selectedBread = '';
+  selectedCremas = [];
+
+  $('modal-img').src = b.img;
+  $('modal-name').textContent = b.name;
+  $('modal-desc').textContent = b.desc;
+  $('modal-price').textContent = 'S/ ' + b.price.toFixed(2);
+  $('modal-qty').textContent = 1;
+
+  const ing = $('modal-ingredients');
+  ing.innerHTML = '';
+  b.ingredients.forEach(i => {
+    const c = document.createElement('span');
+    c.className = 'ingr-chip';
+    c.textContent = i;
+    ing.appendChild(c);
+  });
+
+  document.querySelectorAll('.pan-btn, .crema-btn').forEach(b => b.classList.remove('btn-selected'));
+  openModal('product-modal');
+}
+
+function openCartModal() {
+  renderCartItems();
+  openModal('cart-modal');
+}
+
+function renderCartItems() {
+  const list = $('cart-items-list');
+  // Sacar el emptyMsg del DOM antes de limpiar para no perder la referencia
+  const emptyMsg = $('cart-empty-msg');
+  if (emptyMsg && emptyMsg.parentNode) emptyMsg.parentNode.removeChild(emptyMsg);
+
+  list.innerHTML = '';
+
+  if (cart.length === 0) {
+    if (emptyMsg) { emptyMsg.style.display = 'block'; list.appendChild(emptyMsg); }
+    $('cart-subtotal').textContent = 'S/ 0.00';
+    $('cart-total').textContent = 'S/ 5.00';
+    return;
+  }
+
+  if (emptyMsg) emptyMsg.style.display = 'none';
+  let subtotal = 0;
+
+  cart.forEach(item => {
+    subtotal += item.burger.price * item.qty;
+    const div = document.createElement('div');
+    div.className = 'flex items-center gap-3 bg-surface-container-low p-3 rounded-2xl';
+    div.innerHTML = `
+      <img src="${item.burger.img}" class="w-16 h-16 object-cover rounded-xl flex-shrink-0"/>
+      <div class="flex-1 min-w-0">
+        <p class="font-bold text-on-background text-sm">${item.burger.name}</p>
+        <p class="text-xs text-secondary truncate">Pan: ${item.bread} · ${item.cremas.join(', ')}</p>
+        <p class="text-primary font-bold text-sm mt-1">S/ ${(item.burger.price * item.qty).toFixed(2)}</p>
+      </div>
+      <div class="flex flex-col items-center gap-1">
+        <div class="flex items-center gap-2 bg-surface px-2 py-1 rounded-full border border-outline-variant/30">
+          <button class="text-primary font-bold text-base leading-none cart-qty-minus" data-id="${item.id}">−</button>
+          <span class="text-sm font-bold w-4 text-center">${item.qty}</span>
+          <button class="text-primary font-bold text-base leading-none cart-qty-plus" data-id="${item.id}">+</button>
+        </div>
+        <button class="text-xs text-error hover:underline cart-remove" data-id="${item.id}">Quitar</button>
+      </div>`;
+    list.appendChild(div);
+  });
+
+  $('cart-subtotal').textContent = 'S/ ' + subtotal.toFixed(2);
+  $('cart-total').textContent = 'S/ ' + (subtotal + 5).toFixed(2);
+
+  list.querySelectorAll('.cart-qty-minus').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const it = cart.find(x => x.id === parseInt(btn.dataset.id));
+      if (it && it.qty > 1) { it.qty--; renderCartItems(); updateCartFAB(); }
+    });
+  });
+  list.querySelectorAll('.cart-qty-plus').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const it = cart.find(x => x.id === parseInt(btn.dataset.id));
+      if (it) { it.qty++; renderCartItems(); updateCartFAB(); }
+    });
+  });
+  list.querySelectorAll('.cart-remove').forEach(btn => {
+    btn.addEventListener('click', () => {
+      cart = cart.filter(x => x.id !== parseInt(btn.dataset.id));
+      renderCartItems(); updateCartFAB();
+    });
+  });
+}
+
+function updateCartFAB() {
+  const total = cart.reduce((s, i) => s + i.qty, 0);
+  const fab = $('cart-fab');
+  if (fab) fab.querySelector('span:last-child').textContent = total > 0 ? `${total} Item${total > 1 ? 's' : ''}` : '0 Items';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  // Marcar overlays para soporte táctil
+  document.querySelectorAll('[data-burger-id]').forEach(btn => {
+    const overlay = btn.closest('.absolute');
+    if (overlay) {
+      overlay.classList.add('burger-overlay');
+      btn.classList.add('burger-overlay-btn');
+    }
+  });
+
+  // Botones de cards (hover + botón Agregar)
+  document.querySelectorAll('[data-burger-id]').forEach(btn => {
+    btn.addEventListener('click', () => openProductModal(parseInt(btn.dataset.burgerId)));
+  });
+
+  // Abrir carrito
+  document.querySelectorAll('.open-cart-btn').forEach(btn => {
+    btn.addEventListener('click', openCartModal);
+  });
+
+  // Cantidad en modal detalle
+  $('qty-minus').addEventListener('click', () => {
+    if (modalQty > 1) { modalQty--; $('modal-qty').textContent = modalQty; }
+  });
+  $('qty-plus').addEventListener('click', () => {
+    modalQty++; $('modal-qty').textContent = modalQty;
+  });
+
+  // Pan
+  document.querySelectorAll('.pan-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.pan-btn').forEach(b => b.classList.remove('btn-selected'));
+      btn.classList.add('btn-selected');
+      selectedBread = btn.dataset.val;
+    });
+  });
+
+  // Cremas
+  document.querySelectorAll('.crema-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('btn-selected');
+      const v = btn.dataset.val;
+      selectedCremas = btn.classList.contains('btn-selected')
+        ? [...selectedCremas, v]
+        : selectedCremas.filter(c => c !== v);
+    });
+  });
+
+  // Gaseosa
+  document.querySelectorAll('.gaseo-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.gaseo-btn').forEach(b => b.classList.remove('btn-selected'));
+      btn.classList.add('btn-selected');
+      selectedGaseo = btn.dataset.val;
+    });
+  });
+
+  // Cerrar modales
+  $('modal-close').addEventListener('click', () => closeModal('product-modal'));
+  $('product-modal').addEventListener('click', e => { if (e.target === $('product-modal')) closeModal('product-modal'); });
+  $('cart-close').addEventListener('click', () => closeModal('cart-modal'));
+  $('seguir-btn').addEventListener('click', () => {
+    closeModal('cart-modal');
+    document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+  });
+  $('cart-modal').addEventListener('click', e => { if (e.target === $('cart-modal')) closeModal('cart-modal'); });
+
+  // Agregar al carrito
+  $('modal-add-btn').addEventListener('click', () => {
+    if (!modalBurger) return;
+    cart.push({
+      id: Date.now(),
+      burger: modalBurger,
+      qty: modalQty,
+      bread: selectedBread || 'Brioche',
+      cremas: selectedCremas.length ? selectedCremas : ['Mayonesa'],
+    });
+    updateCartFAB();
+    closeModal('product-modal');
+    setTimeout(() => openCartModal(), 310);
+  });
+
+  // GPS
+  $('gps-btn').addEventListener('click', () => {
+    const status = $('gps-status');
+    if (!navigator.geolocation) {
+      status.innerHTML = '<span class="material-symbols-outlined text-base text-error">error</span> GPS no disponible en este dispositivo';
+      return;
+    }
+    status.innerHTML = '<span class="material-symbols-outlined text-base">progress_activity</span> Detectando ubicación...';
+    navigator.geolocation.getCurrentPosition(
+      pos => {
+        const lat = pos.coords.latitude.toFixed(6);
+        const lon = pos.coords.longitude.toFixed(6);
+        fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`)
+          .then(r => r.json())
+          .then(data => {
+            $('cart-address').value = data.display_name || `${lat}, ${lon}`;
+            status.innerHTML = '<span class="material-symbols-outlined text-base" style="color:#22c55e">check_circle</span> Ubicación detectada correctamente';
+          })
+          .catch(() => {
+            $('cart-address').value = `Lat: ${lat}, Lon: ${lon}`;
+            status.innerHTML = '<span class="material-symbols-outlined text-base" style="color:#22c55e">check_circle</span> Coordenadas obtenidas';
+          });
+      },
+      err => {
+        const msgs = { 1: 'Permiso denegado.', 2: 'No se pudo obtener la ubicación.', 3: 'Tiempo agotado.' };
+        status.innerHTML = `<span class="material-symbols-outlined text-base text-error">error</span> ${msgs[err.code] || 'Error desconocido'}`;
+      },
+      { timeout: 10000, enableHighAccuracy: true }
+    );
+  });
+
+  // WhatsApp
+  $('whatsapp-btn').addEventListener('click', () => {
+    if (cart.length === 0) { alert('Agrega al menos una hamburguesa antes de continuar.'); return; }
+    const name = $('cart-name').value.trim();
+    const address = $('cart-address').value.trim();
+    if (!name) { $('cart-name').focus(); $('cart-name').classList.add('ring-2', 'ring-red-400'); return; }
+    if (!address) { $('cart-address').focus(); $('cart-address').classList.add('ring-2', 'ring-red-400'); return; }
+    $('cart-name').classList.remove('ring-2', 'ring-red-400');
+    $('cart-address').classList.remove('ring-2', 'ring-red-400');
+
+    let subtotal = 0;
+    const lines = cart.map(item => {
+      const s = item.burger.price * item.qty;
+      subtotal += s;
+      return `\u25b8 ${item.qty}x ${item.burger.name} (Pan: ${item.bread} | Cremas: ${item.cremas.join(', ')}) \u2014 S/ ${s.toFixed(2)}`;
+    }).join('\n');
+
+    const gaseoTxt = selectedGaseo ? `\nGaseosa: ${selectedGaseo}` : '';
+    const msg = `*NUEVO PEDIDO \u2014 Gourmet Burgers*\n\n*Cliente:* ${name}\n*Dirección:* ${address}\n\n*Detalle del pedido:*\n${lines}${gaseoTxt}\n\nSubtotal: S/ ${subtotal.toFixed(2)}\nEnvío: S/ 5.00\n*TOTAL: S/ ${(subtotal + 5).toFixed(2)}*\n\n_Pedido enviado desde web_`;
+
+    window.open(`https://wa.me/51999999999?text=${encodeURIComponent(msg)}`, '_blank');
+  });
+
+});
+</script>
+</body></html>
